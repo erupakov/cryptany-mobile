@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+	var coin_rate = {{ $eth_rate }};
+</script>
 <form method="post" action="/confirm-payment">
     {{ csrf_field() }}
     <div class="input-group" style="margin-bottom: 1em;">
-      <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="0.00254" required="required">
+      <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required">
       <div class="input-group-btn">
-        <button type="button" name="switchSrc" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" name="switchSrc" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ETN
         </button>
         <div class="dropdown-menu dropdown-menu-right">
@@ -18,9 +21,10 @@
       </div>
     </div>
     <div class="input-group" style="margin-bottom: 1em;">
+	  <div class="input-group-addon">$</div>
       <input type="text" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required">
       <div class="input-group-btn">     
-        <button type="button" name="switchDst" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" name="switchDst" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           USD
         </button>
         <div class="dropdown-menu dropdown-menu-right">
