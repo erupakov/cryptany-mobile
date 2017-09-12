@@ -11,24 +11,6 @@
 |
 */
 
-Route::get(
-    '/', 
-    function () {
-        return view('welcome');
-    }
-);
-
-Route::get(
-    '/payment-info', 
-    function () {
-        return view('payment');
-    }
-);
-
-Route::get(
-    '/transaction',
-    function () {
-        return view('transaction');
-    }
-);
-
+Route::get('/', 'CGWController@index');
+Route::get('/confirm-payment', 'CGWController@confirm');
+Route::get('/transaction', 'CGWController@transaction');

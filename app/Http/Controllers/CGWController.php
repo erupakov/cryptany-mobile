@@ -6,7 +6,21 @@ use Illuminate\Http\Request;
 
 class CGWController extends Controller
 {
-    //
+
+    public function index()
+    {
+        return view('welcome');
+    }
+
+    public function confirm()
+    {
+        return view('confirm');
+    }
+
+    public function transaction()
+    {
+        return view('transaction');
+    }
 
 
 /* Luhn algorithm number checker - (c) 2005-2008 shaman - www.planzero.org *

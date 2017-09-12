@@ -5,6 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>Новый перевод</title>
 
         <!-- Fonts -->
@@ -40,7 +43,6 @@
           <a class="dropdown-item" href="#">BTC</a>
           <a class="dropdown-item" href="#">LTC</a>
           <a class="dropdown-item" href="#">ETN</a>
-          <div role="separator" class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">WVS</a>
         </div>
       </div>
