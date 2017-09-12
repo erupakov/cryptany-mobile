@@ -10,7 +10,10 @@ class CGWController extends Controller
 
     public function index()
     {
-        return view('welcome', [ 'eth_rate' => 345.44 ]);
+        $contents = file_get_contents("https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=USD");
+        $eth_data = json_decode($contents, TRUE);
+            
+        return view('welcome', [ 'eth_rate' => $eth_data[0]['price_usd'] ]);
     }
 
     public function confirm(Request $request)
