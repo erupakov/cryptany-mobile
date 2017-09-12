@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="input-group">
+    <div class="input-group" style="margin-bottom: 1em;">
       <input type="number" name="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" min="0" max="1" required="required">
       <div class="input-group-btn">     
         <button type="button" name="switchDst" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
