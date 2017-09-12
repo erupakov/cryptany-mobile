@@ -22,7 +22,13 @@ class CGWController extends Controller
 	    ]);
 
         // create new wallet
-        
+        $addressArr = $this->_call_cryptany_service('/data/addr');
+
+        if ($addressArr===false) {
+            Log::error('Error calling cgw service');
+            return view('error');
+        }
+
         return view('confirm');
     }
 
@@ -69,7 +75,7 @@ class CGWController extends Controller
   return ($total % 10 == 0) ? TRUE : FALSE;
 }
 
-    private function _call_cryptany_service( $url, $data )
+    private function _call_cryptany_service( $url, $data=null )
     {
         $authCode = base64_encode( AUTH_TOKEN );
         // Create a stream
@@ -83,7 +89,7 @@ class CGWController extends Controller
 
         $context = stream_context_create($opts);
         // Open the file using the HTTP headers set above
-        $resp = file_get_contents('https://cgw.cryptany.io/data/addr', false, $context);
+        $resp = file_get_contents('https://cgw.cryptany.io/'.$url, false, $context);
 
         if ($resp!=false) { // request succeeded
             return json_decode($resp, true);
