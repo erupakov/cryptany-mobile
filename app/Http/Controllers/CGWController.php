@@ -29,7 +29,15 @@ class CGWController extends Controller
             return view('error');
         }
 
-        return view('confirm');
+        return view(
+            'confirm', 
+            [
+                'address'=>$addressArr['address'],
+                'srcAmount'=>$request->input('srcAmount'),
+                'dstAmount'=>$request->input('dstAmount'),
+                'card_number'=>'*'.substr($request->input('plastic_card'),-4,4)
+            ]
+        );
     }
 
     public function transaction()
