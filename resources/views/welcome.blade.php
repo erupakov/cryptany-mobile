@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Cryptany</title>
+        <title>Новый перевод</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,600" rel="stylesheet" type="text/css">
@@ -18,17 +18,23 @@
                 font-family: 'Roboto', sans-serif;
                 font-weight: 100;
             }
+            .form-pane {
+                background-color: white;
+                padding: 1em;
+                border: 1px solid white;
+                border-radius: 8px;
+            }
         </style>
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-8 ml-md-2 col-lg-6 ml-lg-3">
+                    <div class="form-pane">
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
@@ -36,6 +42,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    </div>
                 </div>
             </div>       
         </div>
