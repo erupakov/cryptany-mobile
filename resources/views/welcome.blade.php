@@ -31,26 +31,26 @@
       </div>
     </div>
 	<div>
-		<p class="green-grass emph">1 ETN = US $354.45</p>
+		<p class="green-grass emph">1 ETN = US ${{ $eth_rate }}</p>
 	</div>
 	<div>
 		<p class="green-grass emph">{{ __('welcome.beta_version_warning') }}</p>
 	</div>
 
     <div class="form-group">
-		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" class="form-control" id="plastic_card" aria-describedby="plasticCard" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
+		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="validity_date" required="required" placeholder="{{ __('welcome.validity_date_placeholder') }}">
+        <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" placeholder="{{ __('welcome.validity_date_placeholder') }}">
     </div>
     <div class="form-group">
-        <input type="email" class="form-control" id="email" required="required" placeholder="{{ __('welcome.email_placeholder') }}">
+        <input type="email" class="form-control" name="user_email" id="email" required="required" placeholder="{{ __('welcome.email_placeholder') }}">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="first_name" placeholder="{{ __('welcome.first_name_placeholder') }}">
+        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="{{ __('welcome.first_name_placeholder') }}">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="family_name" placeholder="{{ __('welcome.family_name_placeholder') }}">
+        <input type="text" class="form-control" name="family_name" id="family_name" placeholder="{{ __('welcome.family_name_placeholder') }}">
     </div>
 
     <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>

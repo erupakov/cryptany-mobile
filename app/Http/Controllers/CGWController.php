@@ -9,9 +9,7 @@ class CGWController extends Controller
 
     public function index()
     {
-		$content = [ 'eth_rate' => 345.44 ];
-
-        return view('welcome', compact('content'));
+        return view('welcome', [ 'eth_rate' => 345.44 ]);
     }
 
     public function confirm()
