@@ -39,9 +39,27 @@
 
     <div class="form-group">
 		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->get('plastic_card') as $error)
+                   <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
     <div class="form-group">
         <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" placeholder="{{ __('welcome.validity_date_placeholder') }}">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->get('validity_date') as $error)
+                   <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
     <div class="form-group">
         <input type="email" class="form-control" name="user_email" id="email" required="required" placeholder="{{ __('welcome.email_placeholder') }}">

@@ -66,4 +66,18 @@ class CGWController extends Controller
   return ($total % 10 == 0) ? TRUE : FALSE;
 }
 
+/**
+ * Configure the validator instance.
+ *
+ * @param  \Illuminate\Validation\Validator  $validator
+ * @return void
+ */
+ public function withValidator($validator)
+ {
+     $validator->after(function ($validator) {
+         if ($this->somethingElseIsInvalid()) {
+             $validator->errors()->add('field', 'Something is wrong with this field!');
+         }
+     });
+ }
 }
