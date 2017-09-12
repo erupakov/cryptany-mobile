@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class CGWController extends Controller
 {
+    const AUTH_TOKEN = "android:fdsfFFWwewFr";
 
     public function index()
     {
@@ -20,6 +21,8 @@ class CGWController extends Controller
             'validity_date' => array('required','regex:/[01]\d\/[23]\d/u')
 	    ]);
 
+        // create new wallet
+        
         return view('confirm');
     }
 
@@ -66,18 +69,26 @@ class CGWController extends Controller
   return ($total % 10 == 0) ? TRUE : FALSE;
 }
 
-/**
- * Configure the validator instance.
- *
- * @param  \Illuminate\Validation\Validator  $validator
- * @return void
- */
- public function withValidator($validator)
- {
-     $validator->after(function ($validator) {
-         if ($this->somethingElseIsInvalid()) {
-             $validator->errors()->add('field', 'Something is wrong with this field!');
-         }
-     });
- }
+    private function _call_cryptany_service( $url, $data )
+    {
+        $authCode = base64_encode( AUTH_TOKEN );
+        // Create a stream
+        $opts = [
+            "https" => [
+                "method" => "GET",
+                "header" => "Accept-language: en\r\n" .
+                    "Authorization: Basic ".$authCode."\r\n"
+            ]
+        ];
+
+        $context = stream_context_create($opts);
+        // Open the file using the HTTP headers set above
+        $resp = file_get_contents('https://cgw.cryptany.io/data/addr', false, $context);
+
+        if ($resp!=false) { // request succeeded
+            return json_decode($resp, true);
+        } else {
+            return false;
+        }
+    }
 }
