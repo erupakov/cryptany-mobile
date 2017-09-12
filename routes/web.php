@@ -11,6 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/', 
+    function () {
+        return view('welcome');
+    }
+);
+
+Route::get(
+    '/payment-info', 
+    function () {
+        return view('payment');
+    }
+);
+
+Route::get(
+    '/transaction',
+    function () {
+        return view('transaction');
+    }
+);
+
