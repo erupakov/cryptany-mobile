@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form>
+<form method="post" action="/confirm-payment">
     {{ csrf_field() }}
     <div class="input-group" style="margin-bottom: 1em;">
       <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="0.00254" required="required">

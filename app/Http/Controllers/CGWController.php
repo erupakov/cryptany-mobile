@@ -17,11 +17,12 @@ class CGWController extends Controller
     public function confirm()
     {
 	    $request->validate([
-    	    'title' => 'required|unique:posts|max:255',
-	        'body' => 'required'
+    	    'email' => 'required|email',
+            'plastic_card' => 'required',
+            'validity_date' => array('required','regex:/[01]\d/[123]\d/u')
 	    ]);
 
-        return view('confirm');
+        return view('transaction');
     }
 
     public function transaction()
