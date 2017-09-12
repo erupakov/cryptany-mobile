@@ -4,7 +4,7 @@
 <form>
     {{ csrf_field() }}
     <div class="input-group" style="margin-bottom: 1em;">
-      <input type="number" name="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="0.00254" min="0" max="1" required="required">
+      <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="0.00254" required="required">
       <div class="input-group-btn">
         <button type="button" name="switchSrc" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ETN
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="input-group" style="margin-bottom: 1em;">
-      <input type="number" name="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" min="0" max="1" required="required">
+      <input type="text" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required">
       <div class="input-group-btn">     
         <button type="button" name="switchDst" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           USD
@@ -31,17 +31,17 @@
       </div>
     </div>
 	<div>
-		<p class="green-grass emph">1 ETN = 345.54 USD</p>
+		<p class="green-grass emph">1 ETN = US $354.45</p>
 	</div>
 	<div>
 		<p class="green-grass emph">{{ __('welcome.beta_version_warning') }}</p>
 	</div>
 
     <div class="form-group">
-		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" class="form-control" id="plastic_card" aria-describedby="plasticCard" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
+		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" class="form-control" id="plastic_card" aria-describedby="plasticCard" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="validity_date" placeholder="{{ __('welcome.validity_date_placeholder') }}">
+        <input type="text" class="form-control" id="validity_date" required="required" placeholder="{{ __('welcome.validity_date_placeholder') }}">
     </div>
     <div class="form-group">
         <input type="email" class="form-control" id="email" required="required" placeholder="{{ __('welcome.email_placeholder') }}">
@@ -53,6 +53,6 @@
         <input type="text" class="form-control" id="family_name" placeholder="{{ __('welcome.family_name_placeholder') }}">
     </div>
 
-    <button type="submit" class="btn btn-success btn-block btn-green">Submit</button>
+    <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>
 </form>
 @endsection
