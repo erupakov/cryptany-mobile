@@ -12,15 +12,15 @@ class CGWController extends Controller
         return view('welcome', [ 'eth_rate' => 345.44 ]);
     }
 
-    public function confirm()
+    public function confirm(Request $request)
     {
 	    $request->validate([
     	    'email' => 'required|email',
             'plastic_card' => 'required',
-            'validity_date' => array('required','regex:/[01]\d/[123]\d/u')
+            'validity_date' => array('required','regex:/[01]\d\/[23]\d/u')
 	    ]);
 
-        return view('transaction');
+        return view('confirm');
     }
 
     public function transaction()

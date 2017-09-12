@@ -38,37 +38,32 @@
 	</div>
 
     <div class="form-group">
-		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                @foreach ($errors->get('plastic_card') as $error)
-                   <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-            </div>
+		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" value="{{ old('plastic_card') }}" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
+        @if ($errors->get('plastic_card'))
+            <p class="text-danger">
+				@php 
+					echo $errors->get('plastic_card');
+				@endphp
+			</p>
         @endif
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" placeholder="{{ __('welcome.validity_date_placeholder') }}">
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                @foreach ($errors->get('validity_date') as $error)
-                   <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-            </div>
+        <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" value="{{ old('validity_date') }}" placeholder="{{ __('welcome.validity_date_placeholder') }}">
+        @if ($errors->get('validity_date'))
+            <p class="text-danger">
+			@php echo $errors->get('validity_date')[0];
+			@endphp
+			</p>
         @endif
     </div>
     <div class="form-group">
-        <input type="email" class="form-control" name="user_email" id="email" required="required" placeholder="{{ __('welcome.email_placeholder') }}">
+        <input type="email" class="form-control" name="user_email" id="email" required="required" value="{{ old('user_email') }}" placeholder="{{ __('welcome.email_placeholder') }}">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="{{ __('welcome.first_name_placeholder') }}">
+        <input type="text" class="form-control" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="{{ __('welcome.first_name_placeholder') }}">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" name="family_name" id="family_name" placeholder="{{ __('welcome.family_name_placeholder') }}">
+        <input type="text" class="form-control" name="family_name" id="family_name" value="{{ old('family_name') }}" placeholder="{{ __('welcome.family_name_placeholder') }}">
     </div>
 
     <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>
