@@ -17,7 +17,7 @@
         <style>
             html, body {
                 background-color: #572A8D;
-                color: white;
+                color: black;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 100;
             }
