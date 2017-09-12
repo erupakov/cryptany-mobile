@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-                    <form>
+<form>
+    {{ csrf_field() }}
     <div class="input-group" style="margin-bottom: 1em;">
       <input type="number" name="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="0.00254" min="0" max="1" required="required">
       <div class="input-group-btn">
@@ -29,13 +30,29 @@
         </div>
       </div>
     </div>
+	<div>
+		<p class="green-grass emph">1 ETN = 345.54 USD</p>
+	</div>
+	<div>
+		<p class="green-grass emph">{{ __('welcome.beta_version_warning') }}</p>
+	</div>
 
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-success btn-block">Submit</button>
-                    </form>
+    <div class="form-group">
+		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" class="form-control" id="plastic_card" aria-describedby="plasticCard" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="validity_date" placeholder="{{ __('welcome.validity_date_placeholder') }}">
+    </div>
+    <div class="form-group">
+        <input type="email" class="form-control" id="email" required="required" placeholder="{{ __('welcome.email_placeholder') }}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="first_name" placeholder="{{ __('welcome.first_name_placeholder') }}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="family_name" placeholder="{{ __('welcome.family_name_placeholder') }}">
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block btn-green">Submit</button>
+</form>
 @endsection

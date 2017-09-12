@@ -9,11 +9,18 @@ class CGWController extends Controller
 
     public function index()
     {
-        return view('welcome');
+		$content = [ 'eth_rate' => 345.44 ];
+
+        return view('welcome', compact('content'));
     }
 
     public function confirm()
     {
+	    $request->validate([
+    	    'title' => 'required|unique:posts|max:255',
+	        'body' => 'required'
+	    ]);
+
         return view('confirm');
     }
 
