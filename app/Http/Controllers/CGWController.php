@@ -22,6 +22,10 @@ class CGWController extends Controller
         return view('transaction');
     }
 
+    public function faq()
+    {
+        return view('faq');
+    }
 
 /* Luhn algorithm number checker - (c) 2005-2008 shaman - www.planzero.org *
  * This code has been released into the public domain, however please      *

@@ -14,3 +14,4 @@
 Route::get('/', 'CGWController@index');
 Route::get('/confirm-payment', 'CGWController@confirm');
 Route::get('/transaction', 'CGWController@transaction');
+Route::get('/faq', 'CGWController@faq');
