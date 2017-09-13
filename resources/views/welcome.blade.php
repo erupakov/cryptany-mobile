@@ -72,6 +72,8 @@
     <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>
 </form>
 
-<script src="js/payment_info.js"></script>
+@endsection
 
+@section('add_js')
+<script src="js/payment_info.js"></script>
 @endsection
