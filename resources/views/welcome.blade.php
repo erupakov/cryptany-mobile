@@ -62,6 +62,12 @@
     <div class="form-group">
         <input type="email" class="form-control" name="user_email" id="email" required="required" value="{{ old('user_email') }}" placeholder="{{ __('welcome.email_placeholder') }}">
     </div>
+    @if ($errors->get('user_email'))
+       <p class="text-danger">
+       @php echo $errors->get('user_email')[0];
+       @endphp
+       </p>
+    @endif
     <div class="form-group">
         <input type="text" class="form-control" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="{{ __('welcome.first_name_placeholder') }}">
     </div>
@@ -71,7 +77,15 @@
 
     <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>
 </form>
-
+<p>
+@if (count($errors)>0)
+<ul>
+@foreach ($errors->all() as $error)
+   <li>{{ $error }}</li>
+@endforeach
+</ul>
+@endif
+</p>
 @endsection
 
 @section('add_js')

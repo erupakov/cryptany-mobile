@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CGWController extends Controller
 {
@@ -19,13 +20,15 @@ class CGWController extends Controller
     public function confirm(Request $request)
     {
 	    $request->validate([
-    	    'email' => 'required|email',
+    	    'user_email' => 'required|email',
             'plastic_card' => 'required',
             'validity_date' => array('required','regex:/[01]\d\/[23]\d/u')
 	    ]);
 
+		Log::debug('Input data validated, going to create wallet');
+
         // create new wallet
-        $addressArr = $this->_call_cryptany_service('/data/addr');
+        $addressArr = $this->_call_cryptany_service('data/addr', ['email'=>$request->input('user_email')] );
 
         if ($addressArr===false) {
             Log::error('Error calling cgw service');
@@ -88,22 +91,26 @@ class CGWController extends Controller
 
     private function _call_cryptany_service( $url, $data=null )
     {
-        $authCode = base64_encode( AUTH_TOKEN );
-        // Create a stream
-        $opts = [
-            "https" => [
-                "method" => "GET",
-                "header" => "Accept-language: en\r\n" .
-                    "Authorization: Basic ".$authCode."\r\n"
-            ]
-        ];
+        $authCode = base64_encode( self::AUTH_TOKEN );
+		Log::debug('Start service request, authCode:'.$authCode);
 
-        $context = stream_context_create($opts);
-        // Open the file using the HTTP headers set above
-        $resp = file_get_contents('https://cgw.cryptany.io/'.$url, false, $context);
+		$client = new \GuzzleHttp\Client(
+			[
+				'base_uri' => 'https://cgw.cryptany.io/', 
+				'headers' => [
+					'Authentication' => 'Basic '.$authCode
+				],
+				'verify' => false
+			]
+		);
+		$res = $client->request('POST', $url, [
+		    		'form_params' => $data ]
+				);
 
-        if ($resp!=false) { // request succeeded
-            return json_decode($resp, true);
+		Log::debug('Called service, got:'.$res->getStatusCode().':'.$res->getBody());
+
+        if ($res->getStatusCode()==200) { // request succeeded
+            return json_decode($res->getBody(), true);
         } else {
             return false;
         }
