@@ -72,4 +72,7 @@
 
     <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>
 </form>
+
+<script src="js/welcome.js"></script>
+
 @endsection
