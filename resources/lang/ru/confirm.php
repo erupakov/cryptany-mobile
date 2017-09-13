@@ -12,6 +12,6 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-
+	'instructions' => '',
     'copy_button' => 'Скопировать адрес'
 ];
