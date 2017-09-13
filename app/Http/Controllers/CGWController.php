@@ -104,7 +104,7 @@ class CGWController extends Controller
 			[
 				'base_uri' => 'https://cgw.cryptany.io/', 
 				'headers' => [
-					'Authentication' => 'Basic '.$authCode
+					'Authorization' => 'Basic '.$authCode
 				],
 				'verify' => false
 			]
