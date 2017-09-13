@@ -10,12 +10,12 @@
       <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required">
       <div class="input-group-btn">
         <button type="button" name="switchSrc" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ETN
+          ETH
         </button>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="#">BTC</a>
           <a class="dropdown-item" href="#">LTC</a>
-          <a class="dropdown-item" href="#">ETN</a>
+          <a class="dropdown-item" href="#">ETH</a>
           <a class="dropdown-item" href="#">WVS</a>
         </div>
       </div>
