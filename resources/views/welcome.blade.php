@@ -45,8 +45,7 @@
 		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" value="{{ old('plastic_card') }}" placeholder="{{ __('welcome.plastic_card_placeholder') }}">
         @if ($errors->get('plastic_card'))
             <p class="text-danger">
-				@php 
-					echo $errors->get('plastic_card');
+				@php echo $errors->get('plastic_card')[0];
 				@endphp
 			</p>
         @endif
@@ -55,8 +54,8 @@
         <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" value="{{ old('validity_date') }}" placeholder="{{ __('welcome.validity_date_placeholder') }}">
         @if ($errors->get('validity_date'))
             <p class="text-danger">
-			@php echo $errors->get('validity_date')[0];
-			@endphp
+			    @php echo $errors->get('validity_date')[0];
+			    @endphp
 			</p>
         @endif
     </div>
@@ -73,6 +72,6 @@
     <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>
 </form>
 
-<script src="js/welcome.js"></script>
+<script src="js/payment_info.js"></script>
 
 @endsection

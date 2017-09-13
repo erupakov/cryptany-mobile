@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CGWController extends Controller
 {
-    const AUTH_TOKEN = "android:fdsfFFWwewFr";
+    const AUTH_TOKEN = "android:n45qDLLOi8";
 
     public function index()
     {
