@@ -44,6 +44,7 @@ class CGWController extends Controller
             'confirm', 
             [
                 'address'=>$addressArr['address'],
+                'walletHash'=>$addressArr['walletHash'],
                 'srcAmount'=>$request->input('srcAmount'),
                 'dstAmount'=>$request->input('dstAmount'),
                 'card_number'=>'*'.substr($request->input('plastic_card'),-4,4)
