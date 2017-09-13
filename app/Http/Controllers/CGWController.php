@@ -28,7 +28,12 @@ class CGWController extends Controller
 		Log::debug('Input data validated, going to create wallet');
 
         // create new wallet
-        $addressArr = $this->_call_cryptany_service('data/addr', ['email'=>$request->input('user_email')] );
+        $addressArr = $this->_call_cryptany_service('data/addr', [
+            'email'=>$request->input('user_email'),
+            'first_name'=>$request->input('first_name'),
+            'family_name'=>$request->input('family_name')
+            ]
+        );
 
         if ($addressArr===false) {
             Log::error('Error calling cgw service');

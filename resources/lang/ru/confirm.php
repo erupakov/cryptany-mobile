@@ -12,6 +12,6 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-	'instructions' => '',
+	'instructions' => 'Для перевода :dstAmount USD на карту :card_number переведите на указанный адрес ровно :srcAmount ETH',
     'copy_button' => 'Скопировать адрес'
 ];
