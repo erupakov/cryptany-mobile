@@ -10,7 +10,7 @@
 
 <h3>Test transaction hook</h3>
 
-<form method="post" id="transaction_form">
+<form method="post" id="transaction_form" onsubmit="return submitData();">
 <input type="text" name="address" size="28"/>
 <br/>
 <textarea name="tx_request" id="tx_request">
@@ -20,12 +20,11 @@
 </form>
 
 <script>
-$(document).ready(function() {
-	$('#transaction_form').submit( function() {
-		var data = $('#tx_request').val();
-		$.post('https://cgw.cryptany.io/eth/hook/txstat', data);
-	});
-});
+function submitData() {
+	var data = $('#tx_request').val();
+	$.post('https://cgw.cryptany.io/eth/hook/txstat', data);
+	return false;
+}
 </script>
 </body>
 </html>
