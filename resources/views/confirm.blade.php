@@ -8,7 +8,8 @@
 <div class="mx-auto mb-2" id="qrcode" style="width: 200px;"></div>
 <p class="green-grass condensed text-center mv-2" id="walletAddress">0x{{ $address }}</p>
 <button class="btn btn-success btn-block btn-green" id="btnCopyAddress" data-clipboard-text="{{ $address }}" name="CopyAddress">{{ __('confirm.copy_button') }}</button>
-<p class="text-center mv-2">Waiting for transaction...</p>
+<imp src="/imp/ajax-loader.gif" alt="waiting..." class="img-fluid d-block"/>
+<p class="text-center mv-2" id="tx_status">Waiting for transaction...</p>
 @endsection
 
 @section('add_js')

@@ -1,5 +1,15 @@
-﻿function updateTransactionStatus() {
-    console.log('Updating transaction status');
+﻿function updateTransactionUnconfirmedStatus(data) {
+    console.log('Updating transaction status: Unconfirmed');
+    $("#tx_status").text('Transaction found registered').fadeIn();
+    $('#loader_icon').hide(fast);
+}
+
+function updateTransactionConfirmedStatus(data) {
+    console.log('Updating transaction status: Confirmed');
+    $("#tx_status").fadeOut(fast, function() {
+        $this.text('Transaction confirmed');
+        $this.fadeIn(fast);
+    });
 }
 
 $(document).ready(function() {
@@ -17,5 +27,6 @@ $(document).ready(function() {
     });
 
     var channel = pusher.subscribe('transactions.' + walletId);
-    channel.bind('App\\Events\\TransactionStatusEvent', updateTransactionStatus);
+    channel.bind('App\\Events\\TransactionStatusUnconfirmedEvent', updateTransactionUnconfirmedStatus);
+    channel.bind('App\\Events\\TransactionStatusConfirmedEvent', updateTransactionConfirmedStatus);
 });
