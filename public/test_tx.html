@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h3>Test transaction hook</h3>
+
+<form method="post" id="transaction_form">
+<input type="text" name="address" size="28"/>
+<br/>
+<textarea name="tx_request" id="tx_request">
+</textarea>
+<br/>
+<button type="submit" name="btnsubmit" value="1">Submit</button>
+</form>
+
+<script>
+$(document).ready(function() {
+	$('#transaction_form').submit( function() {
+		var data = $('#tx_request').val();
+		$.post('https://cgw.cryptany.io/eth/hook/txstat', data);
+	});
+});
+</script>
+</body>
+</html>
