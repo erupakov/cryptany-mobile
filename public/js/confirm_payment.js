@@ -3,6 +3,8 @@
 }
 
 $(document).ready(function() {
+    // setup copy to clipboard
+    new Clipboard('button#btnCopyAddress');
     // create QR code
     $('#qrcode').qrcode({ text: walletAddress, width: 200, height: 200 });
 
