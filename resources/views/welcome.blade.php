@@ -69,12 +69,23 @@
        </p>
     @endif
     <div class="form-group">
-        <input type="text" class="form-control" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="{{ __('welcome.first_name_placeholder') }}">
+        <input type="text" class="form-control" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="{{ __('welcome.first_name_placeholder') }}" required="required">
     </div>
+    @if ($errors->get('first_name'))
+       <p class="text-danger">
+       @php echo $errors->get('first_name')[0];
+       @endphp
+       </p>
+    @endif
     <div class="form-group">
-        <input type="text" class="form-control" name="family_name" id="family_name" value="{{ old('family_name') }}" placeholder="{{ __('welcome.family_name_placeholder') }}">
+        <input type="text" class="form-control" name="family_name" id="family_name" value="{{ old('family_name') }}" placeholder="{{ __('welcome.family_name_placeholder') }}" required="required">
     </div>
-
+    @if ($errors->get('family_name'))
+       <p class="text-danger">
+       @php echo $errors->get('family_name')[0];
+       @endphp
+       </p>
+    @endif
     <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>
 </form>
 <p>

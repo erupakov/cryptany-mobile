@@ -18,6 +18,6 @@ return [
     'first_name_placeholder' => 'Enter your first name',
     'family_name_placeholder' => 'Enter your family name',
     'plastic_card_placeholder' => 'Enter your card number',
-	'beta_version_warning' => 'Warning! This is a beta version of application and thus transfer amount is limited to 1 USD!',
-	'submit' => 'Continue'
+    'beta_version_warning' => 'Warning! This is a beta version of application and thus transfer amount is limited to 1 USD!',
+    'submit' => 'Continue'
 ];
