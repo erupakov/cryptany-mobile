@@ -1,31 +1,69 @@
 <?php
-
+/**
+ * Welcome page actions controller
+ * PHP Version 7
+ *
+ * @category Controller
+ * @package  App\Http\Controllers
+ * @author   Eugene Rupakov <eugene.rupakov@gmail.com>
+ * @license  Apache Common License 2.0
+ * @link     http://moblie.cryptany.io
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Welcome page actions controller
+ *
+ * @category Controller
+ * @package  App\Http\Controllers
+ * @author   Eugene Rupakov <eugene.rupakov@gmail.com>
+ * @license  Apache Common License 2.0
+ * @link     http://cgw.cryptany.io
+ */
 class CGWController extends Controller
 {
     const AUTH_TOKEN = "android:n45qDLLOi8";
 
+    /**
+     * Method for rendering initial screen
+     *
+     * @method index
+     *
+     * @return View main view
+     */
     public function index()
     {
         $contents = file_get_contents("https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=USD");
-        $eth_data = json_decode($contents, TRUE);
+        $eth_data = json_decode($contents, true);
             
         return view('welcome', [ 'eth_rate' => $eth_data[0]['price_usd'] ]);
     }
 
+    /**
+     * Method for handling user input from initial screen
+     *
+     * @param \Illuminate\Http\Request $request Request to process
+     *
+     * @method confirm
+     *
+     * @return View processing screen view
+     */
     public function confirm(Request $request)
     {
-	    $request->validate([
-    	    'user_email' => 'required|email',
+        $request->validate(
+            [
+            'user_email' => 'required|email',
             'plastic_card' => 'required',
-            'validity_date' => array('required','regex:/[01]\d\/[23]\d/u')
-	    ]);
+            'validity_date' => array('required','regex:/[01]\d\/[23]\d/u'),
+            'first_name' => 'requred',
+            'family_name' => 'required'
+            ]
+        );
 
-		Log::debug('Input data validated, going to create wallet');
+        Log::debug('Input data validated, going to create wallet');
 
         // create new wallet
         $addressArr = $this->_call_cryptany_service('data/addr', [
@@ -47,16 +85,18 @@ class CGWController extends Controller
                 'walletHash'=>$addressArr['walletHash'],
                 'srcAmount'=>$request->input('srcAmount'),
                 'dstAmount'=>$request->input('dstAmount'),
-                'card_number'=>'*'.substr($request->input('plastic_card'),-4,4)
+                'card_number'=>'*'.substr($request->input('plastic_card'), -4, 4)
             ]
         );
     }
 
-    public function transaction()
-    {
-        return view('transaction');
-    }
-
+    /**
+     * Method for handling FAQ page
+     *
+     * @method faq
+     *
+     * @return View faq page view
+     */
     public function faq()
     {
         return view('faq');
@@ -92,7 +132,7 @@ class CGWController extends Controller
   }
 
   // If the total mod 10 equals 0, the number is valid
-  return ($total % 10 == 0) ? TRUE : FALSE;
+  return ($total % 10 == 0) ? true : false;
 }
 
     private function _call_cryptany_service( $url, $data=null )
