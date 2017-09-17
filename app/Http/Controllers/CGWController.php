@@ -58,7 +58,7 @@ class CGWController extends Controller
             'user_email' => 'required|email',
             'plastic_card' => 'required',
             'validity_date' => array('required','regex:/[01]\d\/[23]\d/u'),
-            'first_name' => 'requred',
+            'first_name' => 'required',
             'family_name' => 'required'
             ]
         );
