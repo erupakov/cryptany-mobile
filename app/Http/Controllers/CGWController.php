@@ -22,7 +22,7 @@ class CGWController extends Controller
 	    $request->validate([
     	    'user_email' => 'required|email',
             'plastic_card' => 'required',
-            'validity_date' => array('required','regex:/[01]\d\/[23]\d/u')
+            'validity_date' => array('required','regex:/[01]\d\/[123]\d/u')
 	    ]);
 
 		Log::debug('Input data validated, going to create wallet');
