@@ -45,7 +45,7 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-11 col-sm-10 col-md-8 col-lg-6 form-pane p-3 mx-auto mv-3">
+                <div class="col-11 col-sm-10 col-md-8 col-lg-6 form-pane p-3 mx-auto my-3">
         @yield('content')
                 </div>
             </div>       
