@@ -81,14 +81,45 @@ class CGWController extends Controller
             return view('error');
         }
 
+        return redirect()->route(
+            'showTransaction', 
+            [
+                'id'=>$addressArr['walletHash']
+            ]
+        );
+    }
+
+    /**
+     * Method for handling transaction page
+     *
+     * @param Illuminate\Http\Request $request request to process
+     * @param string                  $id      Id of transaction to show
+     *
+     * @method showTransaction
+     * @return View transaction view
+     */
+    public function showTransaction(Request $request, $id)
+    {
+        $txStatus = $this->_call_cryptany_service(
+            'txs/checkAddress', [
+                'wallet'=>$id
+            ]
+        );
+
+        if ($txStatus===false) {
+            Log::error('Wrong wallet Id passed or error calling CGW service');
+            return view('error');
+        }
+
         return view(
             'confirm', 
             [
-                'address'=>$addressArr['address'],
-                'walletHash'=>$addressArr['walletHash'],
-                'srcAmount'=>$request->input('srcAmount'),
-                'dstAmount'=>$request->input('dstAmount'),
-                'card_number'=>'*'.substr($request->input('plastic_card'), -4, 4)
+                 'address'=>$txStatus->address,
+                 'walletHash'=>$txStatus->walletHash,
+                 'srcAmount'=>$txStatus->srcAmount,
+                 'dstAmount'=>$txStatus->dstAmount,
+                 'status'=>$txStatus->status,
+                 'card_number'=>'*'.substr($txStatus->card, -4, 4)
             ]
         );
     }
@@ -140,6 +171,16 @@ class CGWController extends Controller
         return ($total % 10 == 0) ? true : false;
     }
 
+    /**
+     * Method for handling FAQ page
+     *
+     * @param string $url  URI part of the REST method to call
+     * @param Array  $data data to pass to REST method
+     *
+     * @method _call_cryptany_service
+     *
+     * @return View faq page view
+     */    
     private function _call_cryptany_service( $url, $data=null )
     {
         $authCode = base64_encode(self::AUTH_TOKEN);

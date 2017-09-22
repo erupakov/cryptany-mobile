@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'CGWController@index');
-Route::get('/confirm-payment', 'CGWController@index');
-Route::post('/confirm-payment', 'CGWController@confirm');
+Route::get('/transit', 'CGWController@index');
+Route::post('/transit', 'CGWController@confirm');
+Route::get('/transit/{id}', 'CGWController@showTransaction')->name('showTransaction');
 Route::get('/faq', 'CGWController@faq');
