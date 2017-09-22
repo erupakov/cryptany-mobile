@@ -4,7 +4,7 @@
 <script>
 	var coin_rate = {{ $eth_rate }};
 </script>
-<form method="post" action="/confirm-payment">
+<form method="post" action="/transit">
     {{ csrf_field() }}
     <div class="input-group" style="margin-bottom: 1em;">
       <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required">
