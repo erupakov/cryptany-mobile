@@ -35,7 +35,7 @@
       </div>
     </div>
 	<div>
-		<p class="green-grass emph">1 ETN = US ${{ $eth_rate }}</p>
+		<p class="green-grass emph">1 ETH = US ${{ $eth_rate }}</p>
 	</div>
 	<div>
 		<p class="green-grass emph">{{ __('welcome.beta_version_warning') }}</p>

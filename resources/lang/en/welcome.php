@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'validity_date_placeholder' => 'Card valid through (MM/YY)',
-    'email_placeholder' => 'Your email for receipt',
-    'first_name_placeholder' => 'Enter your first name',
-    'family_name_placeholder' => 'Enter your family name',
-    'plastic_card_placeholder' => 'Enter your card number',
-    'beta_version_warning' => 'Warning! This is a beta version of application and thus transfer amount is limited to 1 USD!',
+    'validity_date_placeholder' => 'Expiry date (MM/YY)',
+    'email_placeholder' => 'Your email',
+    'first_name_placeholder' => 'First name',
+    'family_name_placeholder' => 'Family name',
+    'plastic_card_placeholder' => 'Card number',
+    'beta_version_warning' => 'Warning! In this alpha the maximum transfer amount is limited to 1 USD',
     'submit' => 'Continue'
 ];
