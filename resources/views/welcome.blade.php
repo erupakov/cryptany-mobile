@@ -16,7 +16,6 @@
           <a class="dropdown-item" href="#">BTC</a>
           <a class="dropdown-item" href="#">LTC</a>
           <a class="dropdown-item" href="#">ETH</a>
-          <a class="dropdown-item" href="#">WVS</a>
         </div>
       </div>
     </div>
