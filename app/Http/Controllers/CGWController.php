@@ -111,6 +111,21 @@ class CGWController extends Controller
             return view('error');
         }
 
+        if ($txStatus->status>=2) { // if transaction is registered in blockchain
+            return view(
+                'transaction',
+                [
+                    'address'=>$txStatus->address,
+                    'walletHash'=>$txStatus->walletHash,
+                    'srcAmount'=>$txStatus->srcAmount,
+                    'dstAmount'=>$txStatus->dstAmount,
+                    'status'=>$txStatus->status,
+                    'status'=>$txStatus->statusDate,
+                    'card_number'=>'*'.substr($txStatus->card, -4, 4)
+                ]
+            );
+        }
+
         return view(
             'confirm', 
             [
