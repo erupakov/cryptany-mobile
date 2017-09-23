@@ -13,34 +13,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #572A8D;
-                color: black;
-                font-family: 'Roboto', sans-serif;
-                font-weight: normal;
-				font-size: 16px;
-            }
-            .form-pane {
-                background-color: white;
-                border: 1px solid white;
-                border-radius: 8px;
-            }
-			.green-grass {
-				color: #8ADF9C;
-			}
-			.btn-green {
-				background-color: #8ADF9C;
-				border-color: #8ADF9C;
-			}
-			.emph {
-				font-weight: bold;
-			}
-            .condensed {
-                font-family: 'Roboto Condensed', sans-serif;
-            }
-        </style>
+        <link href="css/cstyle.css" rel="stylesheet">
     </head>
     <body>
         <div class="container-fluid">
