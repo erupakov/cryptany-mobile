@@ -1,0 +1,78 @@
+html, body {
+    background-color: #572a8d;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+	font-size: 16px;
+}
+.form-pane {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+.green-grass {
+	color: #2fc07d;
+}
+.btn-green {
+	background-color: #8ADF9C;
+	border-color: #8ADF9C;
+}
+.emph {
+	font-weight: bold;
+}
+.condensed {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.btn-success {
+    background-color: #8adf9c;
+	border:transparent;
+}
+.btn-success:hover {border:transparent;}
+
+.form-control {
+    border-color: currentcolor currentcolor #b9ecc4;
+    border-radius: 0;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+	color: #572a8d;
+}
+
+.form-control:focus {
+    color: #572a8d;
+    border-color: #b9ecc4;
+}
+
+.input-group-addon {display:none;}
+
+.dropdown-toggle {
+	color: #572a8d;
+    background: transparent none repeat scroll 0 0;
+    border-left: medium none;
+    border-radius: 0;
+    border-right: medium none;
+    border-top: medium none;
+    color: black;
+}
+
+.input-group-btn {border-bottom:1px solid #b9ecc4;}
+
+.btn.focus, .btn:focus {
+    box-shadow:none;
+}
+.btn-success.focus, .btn-success:focus {
+    box-shadow:none;
+}
+.show>.btn-success.dropdown-toggle {
+    background-color: transparent;
+    border-color: transparent;
+	color:#572a8d;
+}
+
+.btn-block {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 27px;
+    cursor: pointer;
+    border-radius: 10px;
+}

@@ -17,6 +17,7 @@
 var walletAddress = '{{ $address }}';
 var walletId = '{{ $walletHash }}';
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 <script src="/js/confirm_payment.js"></script>
