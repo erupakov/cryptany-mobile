@@ -13,5 +13,7 @@ return [
     |
     */
 	'instruction' => 'Для перевода :dstAmount USD на карту :card_number переведите на указанный адрес ровно :srcAmount ETH',
-    'copy_button' => 'Скопировать адрес'
+    'copy_button' => 'Скопировать адрес',
+	'waiting' => 'Ожидаем перевода средств...',
+	'title' => 'Processing payment'
 ];

@@ -9,7 +9,7 @@
 <p class="green-grass condensed text-center mv-2" id="walletAddress">0x{{ $address }}</p>
 <button class="btn btn-success btn-block btn-green mb-2" id="btnCopyAddress" data-clipboard-text="0x{{ $address }}" name="CopyAddress">{{ __('confirm.copy_button') }}</button>
 <img src="/img/ajax-loader.gif" alt="waiting..." class="img-fluid d-block mx-auto"/>
-<p class="text-center mv-2" id="tx_status">Waiting for transaction...</p>
+<p class="text-center mv-2" id="tx_status">{{ __('confirm.waiting') }}</p>
 @endsection
 
 @section('add_js')

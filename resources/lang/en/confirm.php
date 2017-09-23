@@ -13,5 +13,7 @@ return [
     |
     */
 	'instruction' => 'To transfer $:dstAmount US to your card :card_number please send exactly :srcAmount ETH to the following address',
-    'copy_button' => 'Copy address'
+    'copy_button' => 'Copy address',
+	'waiting' => 'Waiting for payment...',
+	'title' => 'Processing payment'
 ];
