@@ -72,7 +72,10 @@ class CGWController extends Controller
             'data/addr', [
                 'email'=>$request->input('user_email'),
                 'first_name'=>$request->input('first_name'),
-                'family_name'=>$request->input('family_name')
+                'family_name'=>$request->input('family_name'),
+                'srcAmount'=>$request->input('srcAmount'),
+                'dstAmount'=>$request->input('dstAmount'),
+                'plastic_card'=>$request->input('plastic_card')
             ]
         );
 
