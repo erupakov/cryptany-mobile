@@ -34,7 +34,7 @@
       </div>
     </div>
 	<div>
-		<p class="green-grass emph">1 ETH = US ${{ $eth_rate }}</p>
+		<p class="green-grass emph">1 ETH = {{ $eth_rate }} USD</p>
 	</div>
 	<div>
 		<p class="green-grass emph">{{ __('welcome.beta_version_warning') }}</p>
@@ -64,24 +64,6 @@
     @if ($errors->get('user_email'))
        <p class="text-danger">
        @php echo $errors->get('user_email')[0];
-       @endphp
-       </p>
-    @endif
-    <div class="form-group">
-        <input type="text" class="form-control" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="{{ __('welcome.first_name_placeholder') }}" required="required">
-    </div>
-    @if ($errors->get('first_name'))
-       <p class="text-danger">
-       @php echo $errors->get('first_name')[0];
-       @endphp
-       </p>
-    @endif
-    <div class="form-group">
-        <input type="text" class="form-control" name="family_name" id="family_name" value="{{ old('family_name') }}" placeholder="{{ __('welcome.family_name_placeholder') }}" required="required">
-    </div>
-    @if ($errors->get('family_name'))
-       <p class="text-danger">
-       @php echo $errors->get('family_name')[0];
        @endphp
        </p>
     @endif

@@ -12,6 +12,6 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-	'instruction' => 'Transferring :srcAmount ETH to $:dstAmount US on your card :card_number',
+	'instruction' => 'Transferring :srcAmount ETH to :dstAmount USD on your card :card_number',
     'support_text' => 'Contact support'
 ];

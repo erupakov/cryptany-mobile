@@ -19,6 +19,6 @@ return [
     'family_name_placeholder' => 'Family name',
     'plastic_card_placeholder' => 'Card number',
     'beta_version_warning' => 'Warning! In this alpha the maximum transfer amount is limited to 1 USD',
-    'submit' => 'Continue',
+    'submit' => 'Proceed',
     'page_title' => 'New transfer'
 ];

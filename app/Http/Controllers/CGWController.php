@@ -60,8 +60,6 @@ class CGWController extends Controller
             'user_email' => 'required|email',
             'plastic_card' => 'required',
             'validity_date' => array('required','regex:/[01]\d\/[123]\d/u'),
-            'first_name' => 'required',
-            'family_name' => 'required'
             ]
         );
 
@@ -71,8 +69,6 @@ class CGWController extends Controller
         $addressArr = $this->_call_cryptany_service(
             'data/addr', [
                 'email'=>$request->input('user_email'),
-                'first_name'=>$request->input('first_name'),
-                'family_name'=>$request->input('family_name'),
                 'srcAmount'=>$request->input('srcAmount'),
                 'dstAmount'=>$request->input('dstAmount'),
                 'plastic_card'=>$request->input('plastic_card')

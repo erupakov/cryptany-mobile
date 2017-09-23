@@ -12,8 +12,8 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-	'instruction' => 'To transfer $:dstAmount US to your card :card_number please send exactly :srcAmount ETH to the following address',
+	'instruction' => 'To transfer :dstAmount USD to your card :card_number please send exactly :srcAmount ETH to the following address',
     'copy_button' => 'Copy address',
-	'waiting' => 'Waiting for payment...',
+	'waiting' => 'Waiting for transfer...',
 	'title' => 'Processing payment'
 ];
