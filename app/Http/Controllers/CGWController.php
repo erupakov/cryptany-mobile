@@ -107,7 +107,7 @@ class CGWController extends Controller
 
         if ($txStatus===false) {
             Log::error('Wrong wallet Id passed or error calling CGW service');
-            return view('error');
+            return view('notfound');
         }
 
         if ($txStatus['status']>=2) { // if transaction is registered in blockchain
