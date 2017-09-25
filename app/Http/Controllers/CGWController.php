@@ -72,6 +72,7 @@ class CGWController extends Controller
                 'srcAmount'=>$request->input('srcAmount'),
                 'dstAmount'=>$request->input('dstAmount'),
                 'plastic_card'=>$request->input('plastic_card')
+                'validity_date'=>$request->input('validity_date')
             ]
         );
 
@@ -208,19 +209,26 @@ class CGWController extends Controller
                 'verify' => false
             ]
         );
-        $res = $client->request(
-            'POST', $url, 
-            [
-                'form_params' => $data 
-            ]
-        );
 
-        Log::debug('Called service, got:'.$res->getStatusCode().':'.$res->getBody());
+		try 
+		{
+	        $res = $client->request(
+	            'POST', $url, 
+	            [
+	                'form_params' => $data 
+	            ]
+	        );
 
-        if ($res->getStatusCode()==200) { // request succeeded
-            return json_decode($res->getBody(), true);
-        } else {
-            return false;
-        }
+	        Log::debug('Called service, got:'.$res->getStatusCode().':'.$res->getBody());
+
+	        if ($res->getStatusCode()==200) { // request succeeded
+	            return json_decode($res->getBody(), true);
+	        } else {
+	            return false;
+    	    }
+		} catch (Exception $ex) {
+			Log::error('Error calling CGW service:'.$ex->getData());
+			return false;
+		}
     }
 }
