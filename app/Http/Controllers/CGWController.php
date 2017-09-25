@@ -71,7 +71,7 @@ class CGWController extends Controller
                 'email'=>$request->input('user_email'),
                 'srcAmount'=>$request->input('srcAmount'),
                 'dstAmount'=>$request->input('dstAmount'),
-                'plastic_card'=>$request->input('plastic_card')
+                'plastic_card'=>$request->input('plastic_card'),
                 'validity_date'=>$request->input('validity_date')
             ]
         );
