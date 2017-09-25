@@ -7,7 +7,7 @@
 <p class="lead">You will receive a confirmation email to the provided email address after you create a new transfer 
 in Cryptany mobile wallet. This email contains web link to check the status of your transfer.</p>
 <h4>2. Can I transfer more than 1 USD?</h4>
-<p class="lead">No, in this Alfa the maximum transfer amount is limited to 1 USD</p>
+<p class="lead">No, in this Alpha the maximum transfer amount is limited to 1 USD</p>
 <h4>3. When I get fiat on my card?</h4>
 <p class="lead">Because the traditional banking system limitations, 
 the transfer time of fiat currency to your card may take up to 3 days. 
