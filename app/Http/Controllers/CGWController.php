@@ -45,6 +45,23 @@ class CGWController extends Controller
     }
 
     /**
+     * Method for rendering initial screen
+     *
+     * @method index
+     *
+     * @return View main view
+     */
+    public function indexLegacy()
+    {
+        $contents = file_get_contents(
+            "https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=USD"
+        );
+        $eth_data = json_decode($contents, true);
+             
+        return view('legacy', [ 'eth_rate' => $eth_data[0]['price_usd'] ]);
+    }
+ 
+    /**
      * Method for handling user input from initial screen
      *
      * @param \Illuminate\Http\Request $request Request to process

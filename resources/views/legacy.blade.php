@@ -7,7 +7,7 @@
 <form method="post" action="/transit">
     {{ csrf_field() }}
     <div class="input-group" style="margin-bottom: 1em;">
-      <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required"  readonly="readonly">
+      <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required">
       <div class="input-group-btn">
         <button type="button" name="switchSrc" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ETH
@@ -21,7 +21,7 @@
     </div>
     <div class="input-group" style="margin-bottom: 1em;">
 	  <div class="input-group-addon">$</div>
-      <input type="text" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required" readonly="readonly">
+      <input type="text" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required">
       <div class="input-group-btn">     
         <button type="button" name="switchDst" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           USD
