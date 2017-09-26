@@ -6,32 +6,33 @@
 </script>
 <form method="post" action="/transit">
     {{ csrf_field() }}
-    <div class="input-group" style="margin-bottom: 1em;">
-      <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required">
-      <div class="input-group-btn">
-        <button type="button" name="switchSrc" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ETH
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">BTC</a>
-          <a class="dropdown-item" href="#">LTC</a>
-          <a class="dropdown-item" href="#">ETH</a>
-        </div>
-      </div>
+    <div style="margin-bottom: 1em;">
+        <label for="walletType">Select wallet type</label>
+        <select name="walletType" id="walletType" class="form-control" aria-label="Wallet type" value="External" required="required" readonly="readonly">
+            <option value="External" selected>External</option>
+            <option value="Personal" disabled="disabled">Personal wallet</option>            
+        </select>
     </div>
-    <div class="input-group" style="margin-bottom: 1em;">
-	  <div class="input-group-addon">$</div>
-      <input type="text" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required">
-      <div class="input-group-btn">     
-        <button type="button" name="switchDst" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          USD
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">USD</a>
-          <a class="dropdown-item" href="#">EUR</a>
-          <a class="dropdown-item" href="#">GBP</a>
-        </div>
-      </div>
+    
+    <div style="margin-bottom: 1em;">
+        <input type="text" name="srcAmount" size="10" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required" readonly="readonly">
+        <select name="srcCurrency" id="srcCurrency">
+          <option value="ETH" selected>ETH</option>
+          <option value="OMG" disabled="disabled">OMG</option>
+          <option value="KNC" disabled="disabled">KNC</option>
+          <option value="ZRX" disabled="disabled">ZRX</option>
+          <option value="BAT" disabled="disabled">BAT</option>
+          <option value="GNT" disabled="disabled">GNT</option>
+          <option value="REP" disabled="disabled">REP</option>
+        </select>
+    </div>
+    <div style="margin-bottom: 1em;">
+        <input type="text" size="10" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required" readonly="readonly">
+        <select name="srcCurrency" id="srcCurrency">
+            <option value="USD" selected>USD</a>
+            <option value="EUR" disabled="disabled">EUR</a>
+            <option value="GBP" disabled="disabled">GBP</a>
+        </select>
     </div>
 	<div>
 		<p class="green-grass emph">1 ETH = {{ $eth_rate }} USD</p>

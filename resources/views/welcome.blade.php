@@ -7,15 +7,32 @@
 <form method="post" action="/transit">
     {{ csrf_field() }}
     <div class="input-group" style="margin-bottom: 1em;">
+      <input type="text" name="walletType" id="walletType" class="form-control" aria-label="Wallet type" value="External" required="required"  readonly="readonly">
+      <div class="input-group-btn">
+        <button type="button" name="switchWalletType" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          External
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#">External</a>
+          <a class="dropdown-item" disabled="disabled" href="#">Personal wallet</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group" style="margin-bottom: 1em;">
       <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required"  readonly="readonly">
       <div class="input-group-btn">
         <button type="button" name="switchSrc" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ETH
         </button>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">BTC</a>
-          <a class="dropdown-item" href="#">LTC</a>
           <a class="dropdown-item" href="#">ETH</a>
+          <a class="dropdown-item" disabled="disabled" href="#">OMG</a>
+          <a class="dropdown-item" disabled="disabled" href="#">KNC</a>
+          <a class="dropdown-item" disabled="disabled" href="#">ZRX</a>
+          <a class="dropdown-item" disabled="disabled" href="#">BAT</a>
+          <a class="dropdown-item" disabled="disabled" href="#">GNT</a>
+          <a class="dropdown-item" disabled="disabled" href="#">REP</a>
         </div>
       </div>
     </div>
