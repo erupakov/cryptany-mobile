@@ -14,9 +14,9 @@
         </select>
     </div>
     
-    <div style="margin-bottom: 1em;">
+    <div style="margin-bottom: 1em; width:100%">
         <input type="text" name="srcAmount" size="10" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required" readonly="readonly">
-        <select name="srcCurrency" id="srcCurrency">
+        <select name="srcCurrency" id="srcCurrency" style="display: inline;">
           <option value="ETH" selected>ETH</option>
           <option value="OMG" disabled="disabled">OMG</option>
           <option value="KNC" disabled="disabled">KNC</option>
@@ -26,7 +26,7 @@
           <option value="REP" disabled="disabled">REP</option>
         </select>
     </div>
-    <div style="margin-bottom: 1em;">
+    <div style="margin-bottom: 1em; width:100%">
         <input type="text" size="10" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required" readonly="readonly">
         <select name="srcCurrency" id="srcCurrency">
             <option value="USD" selected>USD</a>

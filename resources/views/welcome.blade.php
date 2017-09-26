@@ -7,14 +7,14 @@
 <form method="post" action="/transit">
     {{ csrf_field() }}
     <div class="input-group" style="margin-bottom: 1em;">
-      <input type="text" name="walletType" id="walletType" class="form-control" aria-label="Wallet type" value="External" required="required"  readonly="readonly">
+      <span>Wallet type to use:</span>
       <div class="input-group-btn">
         <button type="button" name="switchWalletType" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           External
         </button>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="#">External</a>
-          <a class="dropdown-item" disabled="disabled" href="#">Personal wallet</a>
+          <a class="dropdown-item disabled" href="#">Personal wallet</a>
         </div>
       </div>
     </div>
@@ -27,12 +27,12 @@
         </button>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="#">ETH</a>
-          <a class="dropdown-item" disabled="disabled" href="#">OMG</a>
-          <a class="dropdown-item" disabled="disabled" href="#">KNC</a>
-          <a class="dropdown-item" disabled="disabled" href="#">ZRX</a>
-          <a class="dropdown-item" disabled="disabled" href="#">BAT</a>
-          <a class="dropdown-item" disabled="disabled" href="#">GNT</a>
-          <a class="dropdown-item" disabled="disabled" href="#">REP</a>
+          <a class="dropdown-item disabled" href="#">OMG</a>
+          <a class="dropdown-item disabled" href="#">KNC</a>
+          <a class="dropdown-item disabled" href="#">ZRX</a>
+          <a class="dropdown-item disabled" href="#">BAT</a>
+          <a class="dropdown-item disabled" href="#">GNT</a>
+          <a class="dropdown-item disabled" href="#">REP</a>
         </div>
       </div>
     </div>
@@ -45,8 +45,8 @@
         </button>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="#">USD</a>
-          <a class="dropdown-item" href="#">EUR</a>
-          <a class="dropdown-item" href="#">GBP</a>
+          <a class="dropdown-item disabled" href="#">EUR</a>
+          <a class="dropdown-item disabled" href="#">GBP</a>
         </div>
       </div>
     </div>
