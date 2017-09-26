@@ -15,7 +15,7 @@
     </div>
     
     <div style="margin-bottom: 1em; width:100%">
-        <input type="text" name="srcAmount" size="10" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required" readonly="readonly">
+        <input type="text" name="srcAmount" id="srcAmount" class="form-control" aria-label="Transfer this amount of ETH" value="{{ number_format(1/$eth_rate,6) }}" required="required" readonly="readonly">
         <select name="srcCurrency" id="srcCurrency" style="display: inline;">
           <option value="ETH" selected>ETH</option>
           <option value="OMG" disabled="disabled">OMG</option>
@@ -27,7 +27,7 @@
         </select>
     </div>
     <div style="margin-bottom: 1em; width:100%">
-        <input type="text" size="10" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required" readonly="readonly">
+        <input type="text" name="dstAmount" id="dstAmount" class="form-control" aria-label="Get this amount of $" placeholder="$ to get" value="1" required="required" readonly="readonly">
         <select name="srcCurrency" id="srcCurrency">
             <option value="USD" selected>USD</a>
             <option value="EUR" disabled="disabled">EUR</a>
@@ -38,11 +38,11 @@
 		<p class="green-grass emph">1 ETH = {{ $eth_rate }} USD</p>
 	</div>
 	<div>
-		<p class="green-grass emph">{{ __('welcome.beta_version_warning') }}</p>
+		<p class="green-grass emph">{{ __('legacy.beta_version_warning') }}</p>
 	</div>
 
-    <div class="form-group">
-		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" value="{{ old('plastic_card') }}" placeholder="{{ __('welcome.plastic_card_placeholder') }}" autocomplete="false">
+    <div>
+		<input type="text" pattern="\d{12,19}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" value="{{ old('plastic_card') }}" placeholder="{{ __('legacy.plastic_card_placeholder') }}">
         @if ($errors->get('plastic_card'))
             <p class="text-danger">
 				@php echo $errors->get('plastic_card')[0];
@@ -50,8 +50,8 @@
 			</p>
         @endif
     </div>
-    <div class="form-group">
-        <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" value="{{ old('validity_date') }}" placeholder="{{ __('welcome.validity_date_placeholder') }}" autocomplete="false">
+    <div>
+        <input type="text" pattern="\d{4}" class="form-control" name="validity_date" id="validity_date" required="required" value="{{ old('validity_date') }}" placeholder="{{ __('legacy.validity_date_placeholder') }}">
         @if ($errors->get('validity_date'))
             <p class="text-danger">
 			    @php echo $errors->get('validity_date')[0];
@@ -59,8 +59,8 @@
 			</p>
         @endif
     </div>
-    <div class="form-group">
-        <input type="email" class="form-control" name="user_email" id="email" required="required" value="{{ old('user_email') }}" placeholder="{{ __('welcome.email_placeholder') }}">
+    <div>
+        <input type="email" class="form-control" name="user_email" id="email" required="required" value="{{ old('user_email') }}" placeholder="{{ __('legacy.email_placeholder') }}">
     </div>
     @if ($errors->get('user_email'))
        <p class="text-danger">
@@ -68,7 +68,7 @@
        @endphp
        </p>
     @endif
-    <button type="submit" class="btn btn-success btn-block btn-green">{{ __('welcome.submit') }}</button>
+    <button type="submit" class="btn btn-success btn-block btn-green">{{ __('legacy.submit') }}</button>
 </form>
 <p>
 @if (count($errors)>0)
@@ -83,5 +83,5 @@
 
 @section('add_js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-<script src="js/payment_info.js"></script>
+<script src="js/payment_info_legacy.js"></script>
 @endsection

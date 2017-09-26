@@ -14,6 +14,6 @@ return [
     */
 	'instruction' => 'To transfer :dstAmount USD to your card :card_number please send exactly :srcAmount ETH to the following address',
     'copy_button' => 'Copy address',
-	'waiting' => 'Waiting for transfer...',
+	'waiting' => 'Waiting for transaction...',
 	'title' => 'Processing payment'
 ];
