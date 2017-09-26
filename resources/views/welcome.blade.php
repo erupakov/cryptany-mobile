@@ -41,7 +41,8 @@
 	</div>
 
     <div class="form-group">
-		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" value="{{ old('plastic_card') }}" placeholder="{{ __('welcome.plastic_card_placeholder') }}" autocomplete="false">
+		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4}" required="required" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" value="{{ old('plastic_card') }}" placeholder="{{ __('welcome.plastic_card_placeholder') }}" autocomplete="false"
+		oninvalid="setCustomValidity('Please fill in this field')"	oninput="setCustomValidity('')">
         @if ($errors->get('plastic_card'))
             <p class="text-danger">
 				@php echo $errors->get('plastic_card')[0];
@@ -50,7 +51,8 @@
         @endif
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" value="{{ old('validity_date') }}" placeholder="{{ __('welcome.validity_date_placeholder') }}" autocomplete="false">
+        <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" value="{{ old('validity_date') }}" placeholder="{{ __('welcome.validity_date_placeholder') }}" autocomplete="false"
+		oninvalid="setCustomValidity('Please fill in this field')"	oninput="setCustomValidity('')">
         @if ($errors->get('validity_date'))
             <p class="text-danger">
 			    @php echo $errors->get('validity_date')[0];
@@ -59,7 +61,8 @@
         @endif
     </div>
     <div class="form-group">
-        <input type="email" class="form-control" name="user_email" id="email" required="required" value="{{ old('user_email') }}" placeholder="{{ __('welcome.email_placeholder') }}">
+        <input type="email" class="form-control" name="user_email" id="email" required="required" value="{{ old('user_email') }}" placeholder="{{ __('welcome.email_placeholder') }}"
+		oninvalid="setCustomValidity('Please fill in this field')"	oninput="setCustomValidity('')">
     </div>
     @if ($errors->get('user_email'))
        <p class="text-danger">

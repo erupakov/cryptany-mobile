@@ -76,3 +76,6 @@ html, body {
     cursor: pointer;
     border-radius: 10px;
 }
+.mv-2 {
+    word-wrap: break-word;
+}
