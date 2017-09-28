@@ -58,7 +58,7 @@
 	</div>
 
     <div class="form-group">
-		<input type="text" pattern="\d{4} \d{4} \d{4} \d{4} \d{0,3}" required="required" size="19" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" value="{{ old('plastic_card') }}" placeholder="{{ __('welcome.plastic_card_placeholder') }}" autocomplete="false"
+		<input type="text" required="required" size="19" name="plastic_card" class="form-control" id="plastic_card" aria-describedby="plasticCard" value="{{ old('plastic_card') }}" placeholder="{{ __('welcome.plastic_card_placeholder') }}" autocomplete="false"
 		oninvalid="setCustomValidity('Please fill in this field')"	oninput="setCustomValidity('')">
         @if ($errors->get('plastic_card'))
             <p class="text-danger">

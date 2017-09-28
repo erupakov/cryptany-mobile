@@ -10,7 +10,7 @@
         <label for="walletType">Select wallet type</label>
         <select name="walletType" id="walletType" class="form-control" aria-label="Wallet type" value="External" required="required" readonly="readonly">
             <option value="External" selected>External</option>
-            <option value="Personal" disabled="disabled">Personal wallet</option>            
+            <option value="Personal" disabled="disabled">Personal wallet: 0,00 ETH</option>
         </select>
     </div>
     
