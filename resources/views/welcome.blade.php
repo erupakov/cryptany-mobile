@@ -6,7 +6,7 @@
 </script>
 <form method="post" action="/transit">
     {{ csrf_field() }}
-    <div class="input-group" style="margin-bottom: 1em;">
+    <div class="input-group wallet">
       <span>Wallet type to use:</span>
       <div class="input-group-btn">
         <button type="button" name="switchWalletType" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

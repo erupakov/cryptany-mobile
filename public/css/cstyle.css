@@ -36,6 +36,7 @@ html, body {
     border-style: none none solid;
     border-width: medium medium 1px;
 	color: #572a8d;
+	padding-left:0;
 }
 
 .form-control:focus {
@@ -79,3 +80,20 @@ html, body {
 .mv-2 {
     word-wrap: break-word;
 }
+.wallet {
+    display: block;
+    margin-bottom: 2em;
+}
+.wallet .input-group-btn {
+    float: right;
+}
+.wallet > span {
+    position: relative;
+    top: 6px;
+    color: gray;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: transparent;
+}
+	
