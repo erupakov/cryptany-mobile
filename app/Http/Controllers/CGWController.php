@@ -136,14 +136,15 @@ class CGWController extends Controller
                     'walletHash'=>$txStatus['walletHash'],
                     'srcAmount'=>$txStatus['srcAmount'],
                     'dstAmount'=>$txStatus['dstAmount'],
-                    'status'=>$txStatus['status'],
+                    'statusCode'=>$txStatus['status'],
+                    'statusText'=>$txStatus['statusText'],
                     'statusDate'=>$txStatus['statusDate'],
                     'card_number'=>'*'.substr($txStatus['card'], -4, 4)
                 ]
             );
         }
 
-        return view(
+        return view( // return confirmation page (if transaction state is just Created)
             'confirm', 
             [
                     'address'=>$txStatus['address'],
@@ -243,8 +244,11 @@ class CGWController extends Controller
 	        } else {
 	            return false;
     	    }
-		} catch (Exception $ex) {
-			Log::error('Error calling CGW service:'.$ex->getData());
+		} catch (\GuzzleHttp\Exception\ClientException $ex) {
+			Log::error('Error calling CGW service not found error: '.$ex->getResponse()->getStatusCode());
+			return false;
+		} catch (\GuzzleHttp\Exception\TransferException $ex) {
+			Log::error('Other error occured calling CGW service: ['.$ex->getResponse()->getStatusCode().']: '.$ex->getResponse()->getBody());
 			return false;
 		}
     }

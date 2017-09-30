@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Not found</h3>
-<p class="text-danger">Sorry, it seems that the requested page doesn't exist here. We'll try to find it later but for now please take a look at main page.</p>
-
+<h3>Transaction not found</h3>
+<p class="text-danger">Sorry, we cannot find the requested transaction Id. Please check Transaction ID for validity.</p>
 @endsection
