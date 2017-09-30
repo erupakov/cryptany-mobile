@@ -112,7 +112,7 @@ class CGWController extends Controller
         return redirect()->route(
             'showTransaction', 
             [
-                'id'=>$addressArr['walletHash']
+                'id'=>$addressArr['walletHash'],
             ]
         );
     }
