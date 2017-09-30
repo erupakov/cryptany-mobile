@@ -13,6 +13,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 /**
  * Welcome page actions controller
@@ -140,6 +141,8 @@ class CGWController extends Controller
         }
 
         if ($txStatus['status']>=2) { // if transaction is registered in blockchain
+			$transactionDate = new Carbon($txStatus['statusDate']);
+			
             return view(
                 'transaction',
                 [
@@ -147,14 +150,15 @@ class CGWController extends Controller
                     'walletHash'=>$txStatus['walletHash'],
                     'srcAmount'=>$txStatus['srcAmount'],
                     'dstAmount'=>$txStatus['dstAmount'],
-                    'status'=>$txStatus['status'],
-                    'statusDate'=>$txStatus['statusDate'],
+                    'statusCode'=>$txStatus['status'],
+                    'statusText'=>$this::TX_STATUS[$txStatus['status']],
+                    'statusDate'=>$transactionDate->toDateTimeString(),
                     'card_number'=>'*'.substr($txStatus['card'], -4, 4)
                 ]
             );
         }
 
-        return view(
+        return view( // return confirmation page (if transaction state is just Created)
             'confirm', 
             [
                     'address'=>$txStatus['address'],
@@ -246,25 +250,28 @@ class CGWController extends Controller
             ]
         );
 
-        try 
-        {
-            $res = $client->request(
-                'POST', $url, 
-                [
-                    'form_params' => $data 
-                ]
-            );
+		try 
+		{
+	        $res = $client->request(
+	            'POST', $url, 
+	            [
+	                'form_params' => $data 
+	            ]
+	        );
 
-            Log::debug('Called service, got:'.$res->getStatusCode().':'.$res->getBody());
+	        Log::debug('Called service, got:'.$res->getStatusCode().':'.$res->getBody());
 
-            if ($res->getStatusCode()==200) { // request succeeded
-                return json_decode($res->getBody(), true);
-            } else {
-                return false;
-            }
-        } catch (Exception $ex) {
-            Log::error('Error calling CGW service:'.$ex->getData());
-            return false;
-        }
+	        if ($res->getStatusCode()==200) { // request succeeded
+	            return json_decode($res->getBody(), true);
+	        } else {
+	            return false;
+    	    }
+		} catch (\GuzzleHttp\Exception\ClientException $ex) {
+			Log::error('Error calling CGW service not found error: '.$ex->getResponse()->getStatusCode());
+			return false;
+		} catch (\GuzzleHttp\Exception\TransferException $ex) {
+			Log::error('Other error occured calling CGW service: ['.$ex->getResponse()->getStatusCode().']: '.$ex->getResponse()->getBody());
+			return false;
+		}
     }
 }

@@ -8,7 +8,7 @@
 <p class="text-center mv-2" id="txStatus_1">Transaction Id:{{ $walletHash }}</p>
 <p class="text-center mv-2" id="txStatus_2">Wallet address:{{ $address }}</p>
 <p class="text-center mv-2" id="txStatus_3">Transaction status:</p>
-<p class="green-grass condensed text-center mv-2">{{ $status }}, renewed on {{ $statusDate }}</p>
+<p class="green-grass condensed text-center mv-2">{{ $statusText }} [{{ $statusCode }}], renewed on {{ $statusDate }}</p>
 <a class="btn btn-success btn-block btn-green" id="btnSupport" href="mailto:support@cryptany.io?subject=Cryptany app support">{{ __('transaction.support_text') }}</a>
 @endsection
 
@@ -18,4 +18,5 @@ var walletAddress = '{{ $address }}';
 var walletId = '{{ $walletHash }}';
 </script>
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<script src="/js/transaction.js"></script>
 @endsection

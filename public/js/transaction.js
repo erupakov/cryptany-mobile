@@ -8,6 +8,11 @@ function updateTransactionConfirmedStatus(data) {
     location.reload(); // quick hack, will update without reloading later
 }
 
+function updateTransactionFiatSentStatus(data) {
+    console.log('Updating transaction status: Fiats sent');
+    location.reload(); // quick hack, will update without reloading later
+}
+
 $(document).ready(function() {
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
@@ -20,4 +25,5 @@ $(document).ready(function() {
     var channel = pusher.subscribe('transactions.' + walletId);
     channel.bind('App\\Events\\TransactionStatusUnconfirmedEvent', updateTransactionUnconfirmedStatus);
     channel.bind('App\\Events\\TransactionStatusConfirmedEvent', updateTransactionConfirmedStatus);
+    channel.bind('App\\Events\\TransactionStatusFiatSentEvent', updateTransactionFiatSentStatus);
 });
