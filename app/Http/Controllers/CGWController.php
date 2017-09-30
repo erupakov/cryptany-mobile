@@ -13,6 +13,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 /**
  * Welcome page actions controller
@@ -26,6 +27,17 @@ use Illuminate\Support\Facades\Log;
 class CGWController extends Controller
 {
     const AUTH_TOKEN = "android:n45qDLLOi8";
+
+    const TX_STATUS = [
+    1 => 'Transaction is created and waiting for payment',
+    2 => 'Transaction is registered in blockchain and waiting for confirmation',
+    3 => 'Transaction is confirmed in blockchain',
+    4 => "We're processing transaction in our service center",
+    5 => "We've processed transaction successfully and preparing fiat payment request",
+    6 => "We've sent fiats to your account, waiting for destination arrival confirmation",
+    7 => "Transaction completed successfully and is currently marked as closed on our side",
+    1000 => 'There was an error during transaction processing, reverting charges'
+    ];
 
     /**
      * Method for rendering initial screen
@@ -57,7 +69,7 @@ class CGWController extends Controller
             "https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=USD"
         );
         $eth_data = json_decode($contents, true);
-             
+
         return view('legacy', [ 'eth_rate' => $eth_data[0]['price_usd'] ]);
     }
  
@@ -129,6 +141,8 @@ class CGWController extends Controller
         }
 
         if ($txStatus['status']>=2) { // if transaction is registered in blockchain
+			$transactionDate = new Carbon($txStatus['statusDate']);
+			
             return view(
                 'transaction',
                 [
@@ -137,8 +151,8 @@ class CGWController extends Controller
                     'srcAmount'=>$txStatus['srcAmount'],
                     'dstAmount'=>$txStatus['dstAmount'],
                     'statusCode'=>$txStatus['status'],
-                    'statusText'=>$txStatus['statusText'],
-                    'statusDate'=>$txStatus['statusDate'],
+                    'statusText'=>$this::TX_STATUS[$txStatus['status']],
+                    'statusDate'=>$transactionDate->toDateTimeString(),
                     'card_number'=>'*'.substr($txStatus['card'], -4, 4)
                 ]
             );
@@ -168,10 +182,18 @@ class CGWController extends Controller
         return view('faq');
     }
 
-    /* Luhn algorithm number checker - (c) 2005-2008 shaman - www.planzero.org *
-     * This code has been released into the public domain, however please      *
-     * give credit to the original author where possible.                      */
-
+    /**
+     * Method for handling FAQ page
+     * Luhn algorithm number checker - (c) 2005-2008 shaman - www.planzero.org
+     * This code has been released into the public domain, however please
+     * give credit to the original author where possible.
+     *
+     * @param string $number The card number to check
+     *
+     * @method _luhn_check
+     *
+     * @return boolean
+     */
     private function _luhn_check($number) 
     {
 
