@@ -9,7 +9,7 @@
 <p class="text-center mv-2" id="txStatus_2">Wallet address:{{ $address }}</p>
 <p class="text-center mv-2" id="txStatus_3">Transaction status:</p>
 <p class="green-grass condensed text-center mv-2">{{ $status }}, renewed on {{ $statusDate }}</p>
-<a class="btn btn-success btn-block btn-green" id="btnSupport" href="mailto:support@cryptany.io">{{ __('transaction.support_text') }}</a>
+<a class="btn btn-success btn-block btn-green" id="btnSupport" href="mailto:support@cryptany.io?subject=Cryptany app support">{{ __('transaction.support_text') }}</a>
 @endsection
 
 @section('add_js')
