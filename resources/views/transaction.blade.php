@@ -4,8 +4,7 @@
 <div class="justify-center mb-2">
 <img class="img-fluid mx-auto d-block" src="img/transaction_icon.png" alt="transaction logo"/>
 </div>
-<p class="text-center">{{ __('transaction.instruction', ['srcAmount'=>$srcAmount, 'dstAmount'=>$dstAmount, 'card_number'=>$card_number]) }}</p>
-<p class="text-center mv-2" id="txStatus_1">Transaction Id:{{ $walletHash }}</p>
+<p class="text-center mv-2" id="txStatus_1">Transaction ID:{{ $walletHash }}</p>
 <p class="text-center mv-2" id="txStatus_2">Wallet address:{{ $address }}</p>
 <p class="text-center mv-2" id="txStatus_3">Transaction status:</p>
 <p class="green-grass condensed text-center mv-2">{{ $statusText }} [{{ $statusCode }}], renewed on {{ $statusDate }}</p>

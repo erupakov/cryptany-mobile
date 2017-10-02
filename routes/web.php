@@ -17,3 +17,5 @@ Route::get('/transit', 'CGWController@index');
 Route::post('/transit', 'CGWController@confirm');
 Route::get('/transit/{id}', 'CGWController@showTransaction')->name('showTransaction');
 Route::get('/faq', 'CGWController@faq');
+Route::get('/updateStatus18640', 'CGWController@showUpdateStatusPage');
+Route::post('/updateStatus18640', 'CGWController@processUpdateStatus');

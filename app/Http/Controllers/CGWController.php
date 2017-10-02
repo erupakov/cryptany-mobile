@@ -33,8 +33,8 @@ class CGWController extends Controller
     2 => 'Transaction is registered in blockchain and waiting for confirmation',
     3 => 'Transaction is confirmed in blockchain',
     4 => "We're processing transaction in our service center",
-    5 => "We've processed transaction successfully and preparing fiat payment request",
-    6 => "We've sent fiats to your account, waiting for destination arrival confirmation",
+    5 => "We've processed transaction successfully and preparing card payment request",
+    6 => "We've sent funds to your card, waiting for destination arrival confirmation",
     7 => "Transaction completed successfully and is currently marked as closed on our side",
     1000 => 'There was an error during transaction processing, reverting charges'
     ];
@@ -184,6 +184,81 @@ class CGWController extends Controller
 
     /**
      * Method for handling FAQ page
+     * 
+     * @param Request $request Request to process
+     *
+     * @method showUpdateStatusPage
+     *
+     * @return View faq page view
+     */
+    public function showUpdateStatusPage(Request $request)
+    {
+        $request->validate(
+            [
+            'txid' => 'required|max:8'
+            ]
+        );
+
+        Log::debug('Input data validated, going to show update status page');
+
+        $transaction = $this->_call_cryptany_service(
+            'txs/one', [
+                'walletHash'=>$request->input('txid')
+            ]
+        );
+
+        if ($transaction===false) {
+            Log::error('Wrong wallet Id passed or error calling CGW service');
+            return view('notfound');
+        }
+
+        return view('updatestatus')->with('txid',$request->input('txid'))
+			->with('statusCode',$transaction['status'])
+			->with('statusText',$this::TX_STATUS[$transaction['status']])
+			->with('card',$transaction['card'])
+			->with('updated_at',$transaction['updated_at']);
+    }
+
+    /**
+     * Method for processing status 
+     * 
+     * @param Request $request Request to process
+     *
+     * @method processUpdateStatus
+     *
+     * @return View faq page view
+     */
+    public function processUpdateStatus(Request $request)
+    {
+        $request->validate(
+            [
+            'txid' => 'required|max:8',
+			'newStatus' => 'required'
+            ]
+        );
+
+        Log::debug('Input data validated, going to process update status');
+
+        $transaction = $this->_call_cryptany_service(
+            'txs/status', [
+                'walletHash'=>$request->input('txid'),
+				'status'=>$request->input('newStatus')
+            ]
+        );
+
+        if ($transaction===false) {
+            Log::error('Wrong wallet Id passed or error calling CGW service');
+            return view('notfound');
+        }
+
+        return view('updatestatus_success')->with('txid',$request->input('txid'))
+			->with('statusCode',$request->input('newStatus'))
+			->with('statusText',$this::TX_STATUS[$request->input('newStatus')]);
+    }
+
+
+    /**
+     * Method for handling FAQ page
      * Luhn algorithm number checker - (c) 2005-2008 shaman - www.planzero.org
      * This code has been released into the public domain, however please
      * give credit to the original author where possible.
@@ -226,7 +301,7 @@ class CGWController extends Controller
     }
 
     /**
-     * Method for handling FAQ page
+     * Method for calling cryptogateway service
      *
      * @param string $url  URI part of the REST method to call
      * @param Array  $data data to pass to REST method

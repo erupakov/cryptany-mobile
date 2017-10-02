@@ -14,7 +14,7 @@
         </button>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="#">External</a>
-          <a class="dropdown-item disabled" href="#">Personal wallet</a>
+          <a class="dropdown-item disabled" href="#">Personal: 0.00 ETH</a>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
       </div>
     </div>
 	<div>
-		<p class="green-grass emph">1 ETH = {{ $eth_rate }} USD</p>
+		<p class="green-grass emph">1 ETH = {{ number_format($eth_rate, 2) }} USD</p>
 	</div>
 	<div>
 		<p class="green-grass emph">{{ __('welcome.beta_version_warning') }}</p>
@@ -67,8 +67,8 @@
 			</p>
         @endif
     </div>
-    <div class="form-group">
-        <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" value="{{ old('validity_date') }}" placeholder="{{ __('welcome.validity_date_placeholder') }}" autocomplete="false"
+    <div class="form-group" style="display: none;">
+        <input type="text" class="form-control" name="validity_date" id="validity_date" required="required" value="11/19" placeholder="{{ __('welcome.validity_date_placeholder') }}" autocomplete="false"
 		oninvalid="setCustomValidity('Please fill in this field')"	oninput="setCustomValidity('')">
         @if ($errors->get('validity_date'))
             <p class="text-danger">
