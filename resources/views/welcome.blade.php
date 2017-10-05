@@ -7,7 +7,7 @@
 <form method="post" action="/transit">
     {{ csrf_field() }}
     <div class="input-group wallet">
-      <span>Wallet type to use:</span>
+      <span>Select wallet type:</span>
       <div class="input-group-btn">
         <button type="button" name="switchWalletType" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           External
