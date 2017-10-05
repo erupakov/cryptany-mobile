@@ -10,7 +10,7 @@
         <label for="walletType">Select wallet type</label>
         <select name="walletType" id="walletType" class="form-control" aria-label="Wallet type" value="External" required="required" readonly="readonly">
             <option value="External" selected>External</option>
-            <option value="Personal" disabled="disabled">Personal wallet: 0,00 ETH</option>
+            <option value="Personal" disabled="disabled">Personal: 0.00 ETH</option>
         </select>
     </div>
     
@@ -50,7 +50,7 @@
 			</p>
         @endif
     </div>
-    <div>
+    <div style="display: none;">
         <input type="text" pattern="\d{4}" class="form-control" name="validity_date" id="validity_date" required="required" value="{{ old('validity_date') }}" placeholder="{{ __('legacy.validity_date_placeholder') }}">
         @if ($errors->get('validity_date'))
             <p class="text-danger">

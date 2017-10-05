@@ -12,12 +12,14 @@
 <input type="hidden" value="{{ $txid }}" name="txid" >
 <label for="newStatus">New transaction status</label>
 <select name="newStatus" class="form-control">
+	<option value="2">Registered</option>
+	<option value="3">Confirmed</option>
 	<option value="4">Processing</option>
 	<option value="5">Processed</option>
 	<option value="6" selected>Fiats sent</option>
 	<option value="7">Closed</option>
 </select>
-<div class="d-block mv-2">
+<div class="d-block pv-2">
 <button type="submit" class="btn btn-success btn-lg">Change status</button>
 </div>
 </form>

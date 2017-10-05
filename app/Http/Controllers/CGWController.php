@@ -34,7 +34,7 @@ class CGWController extends Controller
     3 => 'Transaction is confirmed in blockchain',
     4 => "We're processing transaction in our service center",
     5 => "We've processed transaction successfully and preparing card payment request",
-    6 => "We've sent funds to your card, waiting for destination arrival confirmation",
+    6 => "We've sent funds to your card",
     7 => "Transaction completed successfully and is currently marked as closed on our side",
     1000 => 'There was an error during transaction processing, reverting charges'
     ];

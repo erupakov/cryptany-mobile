@@ -18,7 +18,7 @@ return [
     'first_name_placeholder' => 'First name',
     'family_name_placeholder' => 'Family name',
     'plastic_card_placeholder' => 'Card number',
-    'beta_version_warning' => 'Warning! In this alpha the maximum transaction amount is limited to 1 USD',
+    'beta_version_warning' => 'Attention! Maximum beta wallet transaction limited to 1 USD',
     'submit' => 'Proceed',
     'page_title' => 'New transaction'
 ];
