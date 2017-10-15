@@ -49,11 +49,11 @@ class CGWController extends Controller
     public function index()
     {
         $contents = file_get_contents(
-            "https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=USD"
+            "https://cgw.cryptany.io/data/rate"
         );
         $eth_data = json_decode($contents, true);
             
-        return view('welcome', [ 'eth_rate' => $eth_data[0]['price_usd'] ]);
+        return view('welcome', [ 'eth_rate' => $eth_data['rate'] ]);
     }
 
     /**
@@ -66,11 +66,11 @@ class CGWController extends Controller
     public function indexLegacy()
     {
         $contents = file_get_contents(
-            "https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=USD"
+            "https://cgw.cryptany.io/data/rate"
         );
         $eth_data = json_decode($contents, true);
 
-        return view('legacy', [ 'eth_rate' => $eth_data[0]['price_usd'] ]);
+        return view('legacy', [ 'eth_rate' => $eth_data['rate'] ]);
     }
  
     /**
