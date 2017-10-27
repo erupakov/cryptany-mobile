@@ -48,7 +48,7 @@ fully refunded to your wallet.
 <p class="lead">
 In beta version of the Cryptany mobile app, transactions are limited to the equivalent of 1
 USD. Larger transactions will be blocked by the system and you will be fully refunded.</p>
-<p>
+<p class="lead">
 Please remember that in order to get a refund, you should not use accounts on
 exchanges.
 </p>
