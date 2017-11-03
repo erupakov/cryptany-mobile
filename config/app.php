@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Cryptany'),
+    'name' => env('APP_NAME', 'Cryptany mobile'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://mobile.cryptany.io'),
+    'url' => env('APP_URL', 'https://mobile.cryptany.io'),
 
     /*
     |--------------------------------------------------------------------------
